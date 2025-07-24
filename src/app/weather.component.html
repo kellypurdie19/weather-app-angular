@@ -1,0 +1,18 @@
+<div class="weather-container">
+  <h1>Weather App</h1>
+
+  <form (submit)="getWeather()">
+    <input [(ngModel)]="city" name="city" placeholder="Enter City" required />
+	<button (click)="getWeather()">Get Weather</button>
+  </form>
+
+  <div *ngIf="weatherData" class="weather-result">
+    <h2>{{ weatherData.name }}, {{ weatherData.sys.country }}</h2>
+    <p>{{ weatherData.weather[0].description | titlecase }}</p>
+    <p> {{ weatherData.main.temp }}°C</p>
+    <img
+      [src]="'https://openweathermap.org/img/wn/' + weatherData.weather[0].icon + '@2x.png'"
+      alt="Weather icon"
+    />
+  </div>
+</div>
